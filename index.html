@@ -3,47 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оповещение о блокировке карты</title>
+    <title>Ошибка подключения</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #0047AB; /* Синий фон */
-            color: white; /* Белый текст */
-            margin: 0;
-            padding: 0;
+            background-color: #f1f1f1;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
-        .container {
+        .error-container {
             text-align: center;
-            background-color: #FFFFFF; /* Белый фон контейнера */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            color: #0047AB; /* Синий текст внутри контейнера */
         }
-        h1 {
-            color: #FF0000; /* Красный заголовок */
+        .error-title {
             font-size: 24px;
+            color: #333;
         }
-        p {
-            font-size: 18px;
+        .error-message {
+            font-size: 16px;
+            color: #666;
             margin: 10px 0;
         }
-        .warning {
-            color: #FF0000; /* Красный текст для предупреждения */
-            font-weight: bold;
+        .retry-button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .retry-button:hover {
+            background-color: #357ab8;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Внимание!</h1>
-        <p>Ваша банковская карта была заблокирована в связи попытки снять средства в размере 153₽.</p>
-        <p class="warning">Для разблокировки карты свяжитесь с вашим банком или правоохранительными органами.</p>
-        <p>Телефон поддержки: <strong>8-800-555-00-08</strong></p>
+    <div class="error-container">
+        <div class="error-title">Нет подключения к интернету</div>
+        <div class="error-message">Проверьте настройки сети.</div>
+        <button class="retry-button" onclick="playSound()">Повторить попытку</button>
     </div>
+
+    <audio id="sound" src="gagara.ogg"></audio>
+
+    <script>
+        function playSound() {
+            var audio = document.getElementById("sound");
+            audio.play();
+        }
+    </script>
 </body>
 </html>
