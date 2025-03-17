@@ -44,14 +44,22 @@
     <div class="error-container">
         <div class="error-title">Нет подключения к интернету</div>
         <div class="error-message">Проверьте настройки сети.</div>
-        <button class="retry-button" onclick="playSound()">Повторить попытку</button>
+        <button class="retry-button" onclick="playRandomSound()">Повторить попытку</button>
     </div>
 
-    <audio id="sound" src="gagara.ogg"></audio>
+    <!-- Аудиофайлы -->
+    <audio id="sound1" src="gagara.mp3"></audio>
+    <audio id="sound2" src="yula.mp3"></audio>
 
     <script>
-        function playSound() {
-            var audio = document.getElementById("sound");
+        function playRandomSound() {
+            // Создаем массив с ID аудиофайлов
+            const sounds = ["sound1", "sound2"];
+            // Выбираем случайный индекс (0 или 1)
+            const randomIndex = Math.floor(Math.random() * sounds.length);
+            // Получаем случайный аудиоэлемент
+            const audio = document.getElementById(sounds[randomIndex]);
+            // Воспроизводим звук
             audio.play();
         }
     </script>
