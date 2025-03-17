@@ -47,18 +47,15 @@
         <button class="retry-button" onclick="playRandomSound()">Повторить попытку</button>
     </div>
 
-    <!-- Аудиофайлы -->
-    <audio id="sound1" src="gagara.mp3"></audio>
-    <audio id="sound2" src="yula.mp3"></audio>
-    <audio id="sound3" src="pojar.mp3"></audio>
     <script>
+        // Массив с путями к аудиофайлам
+        const soundFiles = ["gagara.mp3", "yula.mp3", "pojar.mp3"];
+
         function playRandomSound() {
-            // Создаем массив с ID аудиофайлов
-            const sounds = ["sound1", "sound2"];
-            // Выбираем случайный индекс (0 или 1)
-            const randomIndex = Math.floor(Math.random() * sounds.length);
-            // Получаем случайный аудиоэлемент
-            const audio = document.getElementById(sounds[randomIndex]);
+            // Выбираем случайный индекс
+            const randomIndex = Math.floor(Math.random() * soundFiles.length);
+            // Создаем новый объект Audio с выбранным файлом
+            const audio = new Audio(soundFiles[randomIndex]);
             // Воспроизводим звук
             audio.play();
         }
