@@ -47,12 +47,24 @@
         <button class="retry-button" onclick="playSound()">Повторить попытку</button>
     </div>
 
-    <audio id="sound" src="gagara.ogg"></audio>
+    <!-- Аудио с зацикливанием -->
+    <audio id="sound" src="gagara.ogg" loop></audio>
 
     <script>
         function playSound() {
             var audio = document.getElementById("sound");
-            audio.play();
+            // Проверяем, разрешено ли воспроизведение
+            if (audio.paused) {
+                audio.play().then(() => {
+                    console.log("Звук воспроизводится");
+                }).catch(error => {
+                    console.error("Ошибка воспроизведения звука:", error);
+                });
+            } else {
+                audio.pause();
+                audio.currentTime = 0; // Сбрасываем время воспроизведения
+                audio.play();
+            }
         }
     </script>
 </body>
